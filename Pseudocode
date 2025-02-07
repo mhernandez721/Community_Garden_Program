@@ -1,0 +1,93 @@
+Pseudocode 
+
+# Main Program
+
+1. Create a JFrame window with the title "Moreno Valley Community Garden".
+2. Set up the layout with input fields, dropdowns, and buttons:
+   - Name input field
+   - Contact info input field
+   - Date picker for appointment date
+   - Dropdown for appointment time
+   - Dropdown for donation type
+   - Input field for donation amount (if applicable)
+   - "Register & Schedule Appointment" button
+   - "Make Donation" button
+3. Add action listeners to the buttons to handle user interactions.
+
+4. When the "Register & Schedule Appointment" button is clicked:
+   a. Get the user's name and contact info from the input fields.
+   b. Get the selected date and time from the date picker and dropdown.
+   c. Create a User object with the name and contact info.
+   d. Create an Appointment object with the user's name, date, and time.
+   e. Call the `schedule()` method of the Appointment object.
+   f. Save the appointment details to a text file.
+   g. Display a confirmation message with the appointment details.
+
+5. When the "Make Donation" button is clicked:
+   a. Get the selected donation type from the dropdown.
+   b. If the donation type is "Monetary":
+      i. Get the donation amount from the input field.
+      ii. Validate that the amount is a valid number.
+   c. Create a Donation object with the user's name, donation type, and amount.
+   d. Call the `donate()` method of the Donation object.
+   e. Display a thank-you message with the donation details.
+
+6. Define a method to save appointment details to a text file:
+   a. Open the file in append mode.
+   b. Write the appointment details on the file.
+   c. Close the file.
+
+# GardenEntity Class
+
+1. Define a class called GardenEntity.
+2. Add a protected property called `name`.
+3. Define a constructor to initialize the `name` property.
+4. Define a getter method to return the `name`.
+
+# User Class
+
+1. Define a class called User that inherits from GardenEntity.
+2. Add a private property called `contact`.
+3. Define a constructor to initialize the `name` and `contact` properties.
+4. Define a getter method to return the `contact`.
+
+# Appointment Class
+
+1. Define a class called Appointment that inherits from GardenEntity and implements Schedulable.
+2. Add private properties called `date` and `time`.
+3. Define a constructor to initialize the `name`, `date`, and `time` properties.
+4. Implement the `schedule()` method from the Schedulable interface:
+   a. Print the appointment details to the console.
+5. Define a method called `getDetails()` to return the appointment details as a formatted string.
+
+# Donation Class
+
+1. Define a class called Donation that inherits from GardenEntity and implements Donatable.
+2. Add private properties called `type` and `amount`.
+3. Define a constructor to initialize the `name`, `type`, and `amount` properties.
+4. Implement the `donate()` method from the Donatable interface:
+   a. Print the donation details to the console.
+5. Define a method called `getDetails()` to return the donation details as a formatted string.
+
+# Schedulable Interface
+
+1. Define an interface called Schedulable.
+2. Declare a method called `schedule()`.
+
+# Donatable Interface
+1. Define an interface called Donatable.
+2. Declare a method called `donate()`.
+
+# DateUtils Class
+1. Define a class called DateUtils.
+2. Add a private static constant called `DATE_PATTERN` to store the date format (e.g., "yyyy-MM-dd").
+3. Add a private static property called `dateFormatter` to format dates using the `DATE_PATTERN`.
+4. Implement the `stringToDate()` method:
+   a. Accept a string input (e.g., "2023-12-25").
+   b. Parse the string into a Date object using `dateFormatter`.
+   c. Return the parsed Date object.
+   d. If parsing fails, throw an error indicating an invalid date format.
+5. Implement the `dateToString()` method:
+   a. Accept a Date object as input.
+   b. Format the Date into a string using `dateFormatter`.
+   c. Return the formatted string
